@@ -15,16 +15,16 @@ hosted, completamente gratuito. Noi sceglieremo questa soluzione ovviamente.
 
 ## Perchè un cloud self-hosted?
 
-1. Totale controllo dei propri dati. Possiamo immagazzinare file privati e/o
-confidenziali senza il rischio che vengano usati per scopi a cui non
+1. **Totale controllo dei propri dati**. Possiamo immagazzinare file privati
+e/o confidenziali senza il rischio che vengano usati per scopi a cui non
 acconsentiamo. Nessuno potrà vedere i nostri contatti e impegni riservati, come
 le visite dal medico
 
-2. Convenienza economica. Con poche centinaia di euro si può avere un cloud
-affidabile con diversi TB di spazio. Per confronto, 2TB di spazio su google
-drive possono costare fino a 50€/mese
+2. **Convenienza economica**. Con poche centinaia di euro si può avere un cloud
+affidabile con diversi TB di spazio. Per confronto, 2TB di spazio su un drive
+tradizionale può costare anche decine e decine di €/mese
 
-3. Maggiore sicurezza. Se mantenuto costantemente aggiornato, un software
+3. **Maggiore sicurezza**. Se mantenuto costantemente aggiornato, un software
 open-source con uno sviluppo così attivo diventa quasi impenetrabile. Nextcloud
 offre anche uno scanner che permette di rilevare problemi e vulnerabilità note
 della tua installazione e indica come correggerle.
@@ -32,10 +32,11 @@ Inoltre, una piattaforma centralizzata, se vulnerabile, può esporre i dati di
 decine di milioni di utenti in una volta sola, mentre un'installazione
 casalinga di nextcloud ne esporrà una decina al massimo. Per un attaccante che
 vuole fare più danni possibile, è molto più conveniente profare a infiltrarsi
-nelle grande piattaforme.
+nelle grande piattaforme, visto che ogni installazione potrebbe avere
+vulnerabilità diverse
 
-4. è più divertente e si impara un sacco di cose. Inoltre si può personalizzare
-il sistema come meglio si crede
+4. **è più divertente** e si impara un sacco di cose. Inoltre si può
+personalizzare il sistema come meglio si crede
 
 ## Prerequisiti
 
@@ -50,9 +51,9 @@ DNS dinamici
 ### Questa macchina
 
 La macchina di test è una Virtual Machine con Linux Mint 20.3 cinnamon (don't
-judge pls). Tutte le istruzioni che seguono sono adatte a una macchina ubuntu-
-based. I concetti sono validi per ogni sistema linux, ma occorre adattare di
-conseguenza i comandi e i valori di impostazione.
+judge pls). Tutte le istruzioni che seguono sono adatte a una macchina
+ubuntu-based. I concetti sono validi per ogni sistema linux, ma occorre
+adattare di conseguenza i comandi e i valori di impostazione.
 
 ---------------------------------------
 
@@ -69,7 +70,7 @@ sudo apt-get install openssh-server
 Il server è accessibile alla porta 22. Ci si può autenticare con password o,
 meglio ancora, tramite chiave pubblica-privata.
 
-Maggiori informazioni a riguardo al seguente (link)[https://www.ssh.com/academy/ssh/public-key-authentication]
+Maggiori informazioni a riguardo al seguente [link](https://www.ssh.com/academy/ssh/public-key-authentication)
 
 Per caricare la propria chiave pubblica, copiare il file `~/.ssh/is_rsa.pub`
 dal computer client in `~/.ssh/authorized_keys`. Questo file può avere un
@@ -86,7 +87,7 @@ PermitRootLogin no
 Questo impedisce l'autenticazione con password (meno sicura di quella con
 chiave pubblica) e impedisce l'accesso ssh all'utente root, impedendo di
 ottenere il controllo del sistema con la sola chiave privata (occorre anche
-conoscere la password dell'utente root).
+conoscere la password dell'utente root per eseguire comandi privilegiati).
 
 ## Docker
 
@@ -120,7 +121,7 @@ In seguito, riavviare la macchina.
 ### docker compose
 
 Docker compose è un _compositore_ per docker, in pratica è in grado di gestire
-e creare docker a partire da un singolo file (`docker-compose.yml`), di questo
+e creare docker a partire da un singolo file (`docker-compose.yml`). Di questo
 container si può impostare il comportamento, le risorse a cui accede (porte di
 rete, cartelle condivise e variabili d'ambiente).
 
@@ -172,6 +173,7 @@ dati, invece, verranno salvati su una cartella del sistema operativo, `/srv`, a
 cui l'utente deve avere accesso, quindi gli diamo la proprietà.
 
 ```sh
+# nella cartella in cui è presente il file docker-compose.yml
 docker compose pull
 sudo chown $USER:$USER /srv
 ```
